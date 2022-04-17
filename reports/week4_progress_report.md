@@ -50,14 +50,32 @@
 
 ## Contributions:
 
-- Roman + Detlef: 
+- Roman:
   - Setup React project
   - fixed .gitignore file in repo
-- James + Alam: 
+  - Addressed some issues in the Requirements and Policies doc
+    - Fixed use cases
+    - Fixed External Feedback + Deadlines
+- Detlef: 
+  - Setup React project
+  - fixed .gitignore file in repo
+  - Addressed some issues in the Requirements and Policies doc
+    - Added a new use case
+- James:
   - Setup the Firebase
-  - Added Firebase link to the requirements document
+  - Added a new use case
+  - Addressed some issues in the Requirements and Policies doc
+    - Added Firebase link
+    - Added a new use case
+- Alam: 
+  - Helped setup the Firebase
+  - Addressed some issues in the Requirements and Policies doc
+    - Fixed issues in the use case section
 - Ahmed: 
   - Setup Github 
-  - Added Github link to the requirements document
+  - Addressed some issues in the Requirements and Policies doc
+    - Added Github link
+    - Fixed External Feedback + Deadlines
 - Umair: 
   - Contributed ideas
+
