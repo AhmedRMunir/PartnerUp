@@ -1,7 +1,26 @@
 # PartnerUp! 
 
-**PartnerUp!** is an app that is used mainly by professors and teachers to match students into groups based on student preferences.
+## Description
 
-The app will be built using React and Firebase as the database.
+**PartnerUp!** is an app that is used mainly by instructors to match students into groups based on student preferences.
 
-The node_modules contain all the React scripts and components. To run the app simply download it and run npm start in the terminal.
+
+## Development Kit
+
+The app will be built using React for the front-end, Firebase for the backend.
+
+## Startup instructions
+
+1) Clone the repo
+2) Make sure you have Node JS and npm installed on your device
+3) Open a terminal in the project directory
+4) Run the following commands: 
+   - > `npm install`
+   - > `npm start`
+
+
+## Requirements and Policies Document
+- https://tinyurl.com/partnerUpReqDoc
+- Alternative link: [Document Link](https://docs.google.com/document/d/1VrvV0UM93s2e9YQNFb8kr0QR5iFvXlxVcxXGz5e97yA)
+-   
+  > LOL
