@@ -4,6 +4,7 @@ import React from 'react';
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from "firebase/firestore";
 import { collection, query, where, getDocs, initializeFirestore } from "firebase/firestore";
+import { useState } from "react";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -21,35 +22,30 @@ const firebaseapp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseapp);
 
 function App() {
-  getPreferences();
+  
+  const [firebaseData, updateData] = useState([]);
+  //getPreferences(updateData);
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div>{firebaseData.map(item => <div> {item} </div>)}</div>
+
+        <button onClick={() => getPreferences(updateData)}>Fetch Data</button>
+        
       </header>
     </div>
   );
 }
 
-async function getPreferences() {
+async function getPreferences(updateData) {
   const q = query(collection(db, "preferences"));
 
   const querySnapshot = await getDocs(q);
+  let data = [];
   querySnapshot.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id, " => ", doc.data());
+    data.push(JSON.stringify(doc.data()));
   });
+  updateData(data);
 }
 
 export default App;
