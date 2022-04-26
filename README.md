@@ -16,6 +16,7 @@ The app will be built using React for the front-end, Firebase for the backend.
 3) Open a terminal in the project directory
 4) Run the following commands: 
    - > `npm install`
+   - > `npm install firebase`
    - > `npm start`
 
 
