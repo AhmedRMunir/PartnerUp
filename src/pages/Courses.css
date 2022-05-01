@@ -1,3 +1,23 @@
-.course1, .course2, .course3 {
-    text-align: center;
+.question {
+    text-align: left;
+}
+
+.questionLabel {
+    margin-bottom: 0.3cm;
+}
+
+.choiceLabel {
+    margin-bottom: 0.1cm;
+}
+
+.addChoice {
+    margin-top: 0.3cm;
+}
+
+.addQuestion {
+    margin-top: 0.5cm;
+}
+
+.submit {
+    margin-top: 1cm;
 }

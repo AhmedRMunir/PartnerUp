@@ -8,17 +8,5 @@ export const SideBarData = [
         path: '/Course1',
         icon: <IoSchool/>,
         className: 'nav-text'
-    },
-    {
-        title: 'Course 2',
-        path: '/Course2',
-        icon: <IoSchool/>,
-        className: 'nav-text'
-    },
-    {
-        title: 'Course 3',
-        path: '/Course3',
-        icon: <IoSchool/>,
-        className: 'nav-text'
-    },
+    }
 ]
