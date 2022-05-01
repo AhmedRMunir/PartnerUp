@@ -1,5 +1,4 @@
-import logo from './logo.svg';
-import './App.css';
+import './App2.css';
 import React from 'react';
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from "firebase/firestore";
@@ -21,7 +20,7 @@ const firebaseapp = initializeApp(firebaseConfig);
 
 const db = getFirestore(firebaseapp);
 
-function App() {
+function App2() {
   
   const [firebaseData, updateData] = useState([]);
   //getPreferences(updateData);
@@ -48,4 +47,4 @@ async function getPreferences(updateData) {
   updateData(data);
 }
 
-export default App;
+export default App2;
