@@ -73,6 +73,7 @@ async function getQuestions(setInputFields) {
     const choices = doc.data().choices;
     inputFields.push({question: question, choices: choices})
   });
+  inputFields.sort((a,b) => {return a.index - b.index});
   console.log(inputFields);
   setInputFields(inputFields);
 }
