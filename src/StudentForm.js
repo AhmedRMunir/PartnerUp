@@ -35,7 +35,7 @@ function StudentForm() {
   return (
     <div className="StudentForm">
       <header className="StudentForm-header">
-        <div>{inputFields.map(item => <div className="arrange-vertically">{item.question}{item.choices.map(choice => <label className="arrange-vertically"><input type="radio" name={item.question} value={choice} onChange={event => radioButtonSelected(item.question, choice, answers, setAnswers)} />{choice}</label>)}</div>)}</div>
+        <div>{inputFields.map((item, idx) => <div className="arrange-vertically">{item.question}{item.choices.map(choice => <label className="arrange-vertically"><input type="radio" name={item.question + idx} value={choice} onChange={event => radioButtonSelected(item.question, choice, answers, setAnswers)} />{choice}</label>)}</div>)}</div>
         <button onClick={() => getQuestions(setInputFields)}>Fetch Data</button>
         <button onClick={() => submit(answers, inputFields)}>Submit</button>
         
@@ -64,7 +64,7 @@ async function submit(answers, inputFields) {
 }
 
 async function getQuestions(setInputFields) {
-  const q = query(collection(db, "questions"));
+  const q = query(collection(db, "questions"), where("class", "==", doc(db, 'classes', class_id)));
 
   const querySnapshot = await getDocs(q);
   let inputFields = [];
