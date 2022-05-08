@@ -1,5 +1,4 @@
-import logo from './logo.svg';
-import './App.css';
+import '../App2.css';
 import {useLocation} from "react-router-dom";
 import React from 'react';
 import { initializeApp } from 'firebase/app';

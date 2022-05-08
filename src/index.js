@@ -7,9 +7,6 @@ import Course3 from './pages/Course3';
 import InstructorHome from './pages/InstructorHome';
 import LaunchPage from './pages/LaunchPage';
 import './index.css';
-import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import App from './App';
 import StudentForm from './pages/StudentForm';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
