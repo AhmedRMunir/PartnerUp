@@ -16,10 +16,6 @@ node {
     download = true
 }
 
-task installNpm (type: Exec) {
-    commandLine "npm", "install"
-}
-
 task start(type: Exec, dependsOn: npmInstall) {
     commandLine "npm", "start"
 }
