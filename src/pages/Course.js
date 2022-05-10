@@ -1,26 +1,8 @@
 import React from 'react';
 import NavBar from '../components/NavBar';
 import './Courses.css';
-import Question from './Question';
-import { initializeApp } from 'firebase/app';
-import { getFirestore } from "firebase/firestore";
-import { collection, query, where, getDocs, initializeFirestore, addDoc, doc, setDoc } from "firebase/firestore";
-import { useState } from "react";
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyCN1E0yCkUbk2v8kQH3PGPpvAqICZkrHOc",
-  authDomain: "partnerup-8fb5c.firebaseapp.com",
-  projectId: "partnerup-8fb5c",
-  storageBucket: "partnerup-8fb5c.appspot.com",
-  messagingSenderId: "757257283487",
-  appId: "1:757257283487:web:0c6e02b206ade0c9033faa"
-};
-
-// Initialize Firebase
-const firebaseapp = initializeApp(firebaseConfig);
-
-const db = getFirestore(firebaseapp);
+import Question from '../components/Question';
+import { collection, addDoc, doc } from "firebase/firestore";
 
 class Course extends React.Component {
   constructor(props) {
@@ -117,10 +99,10 @@ class Course extends React.Component {
 
   submit() {
     for (let i = 0; i < this.state.questions.length; i++) {
-      addDoc(collection(db, 'questions'), {
+      addDoc(collection(this.props.db, 'questions'), {
         question: this.state.questions[i],
         choices: this.state.choices[i],
-        class: doc(db, 'classes', this.props.classID)
+        class: doc(this.props.db, 'classes', this.props.classID)
       });
     }
   }

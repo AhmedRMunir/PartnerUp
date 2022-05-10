@@ -21,6 +21,5 @@ describe("App Component Testing", () => {
           ReactDOM.render(<LaunchPage />, rootContainer);
         // assert that h1 contains Hello World
         const h1 = rootContainer.querySelector("h1");
-        expect.
-      });
+    });
 });

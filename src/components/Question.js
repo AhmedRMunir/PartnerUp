@@ -1,5 +1,4 @@
 import React from 'react';
-import './Courses.css';
 
 class Question extends React.Component {
     render() {
@@ -8,7 +7,7 @@ class Question extends React.Component {
             choices.push(<div key={'c' + i}>
                 <label>
                     Choice #{i + 1}:
-                    <input className="choiceLabel" type="text" name="c11" onChange={e => this.props.onChangeChoice(i, e.target.value)} />
+                    <input className="choiceLabel" type="text" onChange={e => this.props.onChangeChoice(i, e.target.value)} />
                 </label>
             </div>);
         }
