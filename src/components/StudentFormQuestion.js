@@ -1,6 +1,6 @@
 import { React, Component } from 'react';
 
-class FormQuestion extends Component {
+class StudentFormQuestion extends Component {
     render() {
         let choices = [];
         for (let i = 0; i < this.props.question.data()['choices'].length; i++) {
@@ -20,4 +20,4 @@ class FormQuestion extends Component {
     }
 }
 
-export default FormQuestion
+export default StudentFormQuestion

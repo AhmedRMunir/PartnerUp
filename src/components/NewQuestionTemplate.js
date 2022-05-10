@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Question extends React.Component {
+class NewQuestionTemplate extends React.Component {
     render() {
         let choices = [];
         for (let i = 0; i < this.props.numChoices; i++) {
@@ -30,4 +30,4 @@ class Question extends React.Component {
     }
 }
 
-export default Question
+export default NewQuestionTemplate

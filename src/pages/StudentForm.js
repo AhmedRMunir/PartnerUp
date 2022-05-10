@@ -1,59 +1,78 @@
-/*
-import './StudentForm.css';
-import { React } from 'react';
+import { React, Component } from 'react';
 import { collection, query, doc, where, getDocs, addDoc } from "firebase/firestore";
+import StudentFormQuestion from '../components/StudentFormQuestion';
+import './StudentForm.css';
 
-class StudentForm extends React.Component {
+class QuestionTemplate extends Component {
 
     constructor(props) {
         super(props);
+        const queryParams = new URLSearchParams(window.location.search);
+        const classID = queryParams.get('classID');
         this.state = {
-            
+            studentName: '',
+            classID: classID,
+            questions: [],
+            choices: []
         };
+        this.getQuestions();
+    }
+    
+    async getQuestions() {
+        let questionsQuery = query(collection(this.props.db, "questions"), where("class", "==", doc(this.props.db, 'classes', this.state.classID)));
+        const querySnapshot = await getDocs(questionsQuery);
+        querySnapshot.docs.sort((q1, q2) => {
+            return q1.index - q2.index;
+        });
+        let choices = []
+        querySnapshot.docs.forEach(doc => {
+            choices.push('');
+        });
+        this.setState({
+            questions: querySnapshot.docs,
+            choices: choices
+        });
     }
 
-    radioButtonSelected(question, choice, answers, setAnswers) {
-        this.state.setAnswers({
-            ...this.state.answers, ...{[question]: choice}
+    onChangeName(name) {
+        this.setState({
+            studentName: name
         });
     }
-    
-    submit(answers, inputFields) {
-        let answers_arr = [];
-        for(let i = 0; i < inputFields.length; i++) {
-            answers_arr.push(answers[inputFields[i].question]);
-        }
-    
-        let submitObj = {answers: answers_arr, class: doc(this.props.db, 'classes', class_id)}
-    
-        addDoc(collection(this.props.db, "preferences"), submitObj);
-        console.log(submitObj);
-        
-    }
-    
-    async getQuestions(setInputFields) {
-        const questions_query = query(collection(this.props.db, "questions"), where("class", "==", doc(this.props.db, 'classes', this.state.class_id)));
-    
-        const querySnapshot = await getDocs(questions_query);
-        querySnapshot.forEach((doc) => {
-            
+
+    handleOptionChange(questionNum, optionNum) {
+        let newChoices = this.state.choices.slice();
+        newChoices[questionNum] = this.state.questions[questionNum].data()['choices'][optionNum];
+        this.setState({
+            choices: newChoices
         });
-        setInputFields(inputFields);
+    }
+
+    submit() {
+        addDoc(collection(this.props.db, 'preferences'), {
+            answers: this.state.choices,
+            class: doc(this.props.db, 'classes', this.state.classID),
+            studentName: this.state.studentName
+        });
     }
 
     render() {
+        let questions = []
+        for (let i = 0; i < this.state.questions.length; i++) {
+            let doc = this.state.questions[i];
+            questions.push(<StudentFormQuestion key={doc.id} question={doc} onOptionChange={optionNum => this.handleOptionChange(i, optionNum)} />);
+        }
         return (
-            <div className="StudentForm">
-            <header className="StudentForm-header">
-            <div>{this.state.inputFields.map((item, idx) => <div className="arrange-vertically">{item.question}{item.choices.map(choice => <label className="arrange-vertically"><input type="radio" name={item.question + idx} value={choice} onChange={event => this.radioButtonSelected(item.question, choice, this.state.answers, this.state.setAnswers)} />{choice}</label>)}</div>)}</div>
-                <button onClick={() => this.getQuestions(this.state.setInputFields)}>Fetch Data</button>
-                <button onClick={() => this.submit(this.state.answers, this.state.inputFields)}>Submit</button>
-            
-                </header>
+            <div className="PrefForm">
+                <div>
+                    <h3>Name:</h3>
+                    <input className='nameField' type="text" name="name" onChange={e => this.onChangeName(e.target.value)} />
+                </div>
+                {questions}
+                <div><button className="submit" onClick={() => this.submit()}>Submit</button></div>
             </div>
         );
     }
 }
 
-export default StudentForm;
-*/
+export default QuestionTemplate;

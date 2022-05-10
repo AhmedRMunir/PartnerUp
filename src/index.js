@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Course from './pages/Course';
-import InstructorHome from './pages/InstructorHome';
 import LaunchPage from './pages/LaunchPage';
-import PrefForm from './pages/PrefForm';
+import InstructorHome from './pages/InstructorHome';
+import FormCreator from './pages/FormCreator';
+import StudentForm from './pages/StudentForm';
 
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from "firebase/firestore";
@@ -31,8 +31,8 @@ root.render(
       <Routes>
         <Route path='/' element={<LaunchPage db={db} />} />
         <Route path='/instructor-home' element={<InstructorHome db={db} />} />
-        <Route path='/course1' element={<Course classID={'NVLtMSE99jAXbooSTP6n'} db={db} />} />
-        <Route path='/student-form' element={<PrefForm db={db} />} />
+        <Route path='/course1' element={<FormCreator classID={'NVLtMSE99jAXbooSTP6n'} db={db} />} />
+        <Route path='/student-form' element={<StudentForm db={db} />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
