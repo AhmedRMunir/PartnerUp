@@ -1,8 +1,11 @@
 var assert = require('assert');
-describe('Array', function () {
-  describe('#indexOf()', function () {
-    it('should return -1 when the value is not present', function () {
-      assert.equal([1, 2, 3].indexOf(4), -1);
+var matchingAlgo = require('../src/pages/Algorithm');
+describe('Matching Algorithm', function () {
+  describe('#testMatchStudents()', function () {
+    it('matching algorithm should generate correct results for dummy preference data', function () {
+      let people = [{studentName: "James"}, {studentName: "Detlef"}];
+      let pairings = matchingAlgo.runAlgorithm(people);
+      
     });
   });
 });
