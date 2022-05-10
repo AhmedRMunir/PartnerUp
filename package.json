@@ -27,11 +27,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-<<<<<<< HEAD
-    "test": "jasmine",
-=======
     "test": "jest",
->>>>>>> testing_config
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
