@@ -3,8 +3,9 @@ import './NavBar.css';
 
 export const SideBarData = [
     {
-        title: 'Course 1',
-        path: '/Course1',
+        course_id: 0,
+        title: '',
+        path: '',
         icon: <IoSchool/>,
         className: 'nav-text'
     }

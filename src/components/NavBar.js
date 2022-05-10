@@ -7,18 +7,58 @@ import './NavBar.css';
 import { IconContext } from 'react-icons';
 import { IoMdAddCircleOutline } from "react-icons/io";
 import {IoSchool} from "react-icons/io5";
+import { collection, addDoc, doc, query, where, getDocs } from "firebase/firestore";
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from "firebase/firestore";
 
 function NavBar() {
+
+    // Your web app's Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyCN1E0yCkUbk2v8kQH3PGPpvAqICZkrHOc",
+    authDomain: "partnerup-8fb5c.firebaseapp.com",
+    projectId: "partnerup-8fb5c",
+    storageBucket: "partnerup-8fb5c.appspot.com",
+    messagingSenderId: "757257283487",
+    appId: "1:757257283487:web:0c6e02b206ade0c9033faa"
+  };
+  
+  // Initialize Firebase
+  const firebaseapp = initializeApp(firebaseConfig);
+  
+  const db = getFirestore(firebaseapp);
 
     const [sidebar, setSideBar] = useState(false);
     const [showModal, setShowModal] = useState(false)
     const [courses, setCourses] = useState(SideBarData)
 
+
     const showSideBar = () => setSideBar(!sidebar);
 
-    const handleSubmit = (input) => {
+    const addCourse = (input) => {
         setShowModal(false)
-        setCourses([...courses, { title: input, path: '/Course1', icon: <IoSchool />, className: 'nav-text' }])
+        console.log(input);
+
+        let class_id = Math.random().toString().substring(2,8);
+        setCourses([...courses, { course_id: class_id, title: input, path: '/courses', icon: <IoSchool />, className: 'nav-text' }])
+    }
+
+
+    const addToDb = () => {
+        
+        for (let i = 0; i < courses.length; i++) {
+
+            console.log(courses[i].title)
+            console.log(courses[i].course_id)
+            addDoc(collection(db, 'classes'), { 
+                name: courses[i].title
+            });
+          }
+    }
+    
+    const handleSubmit = (input) => {
+        addCourse(input);
+        addToDb();
     }
 
     return (
