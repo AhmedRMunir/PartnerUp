@@ -8,12 +8,5 @@ export const SideBarData = [
         path: '/Course1',
         icon: <IoSchool/>,
         className: 'nav-text'
-    },
-
-    {
-        title: 'Add Course',
-        path: '/',
-        icon: <GrAddCircle/>,
-        className: 'nav-text'
     }
 ]
