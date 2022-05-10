@@ -120,8 +120,6 @@ class FormCreator extends Component {
   async runAlgorithm() {
     let questionsQuery = query(collection(this.props.db, "preferences"), where("class", "==", doc(this.props.db, 'classes', this.state.classID)));
     const querySnapshot = await getDocs(questionsQuery);
-    console.log(querySnapshot.docs);
-    console.log(querySnapshot.docs);
     let prefs = [];
     querySnapshot.forEach(doc => {
       prefs.push(doc);
