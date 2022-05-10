@@ -14,7 +14,8 @@ The app will be built using React for the front-end, Firebase for the backend.
 1) Clone the repo
 2) Open a terminal in the project directory
 4) Run the following command: 
-   - > `./gradlew start`
+   - > `./gradlew`
+   - > npm start
    
 ## Requirements and Policies Document
 - https://tinyurl.com/partnerUpReqDoc
