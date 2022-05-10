@@ -3,6 +3,12 @@ import NavBar from '../components/NavBar';
 import './Courses.css';
 import NewQuestionTemplate from '../components/NewQuestionTemplate';
 import { collection, addDoc, doc, query, where, getDocs } from "firebase/firestore";
+// const query = require('firebase/firestore').query;
+// const collection = require('firebase/firestore').collection;
+// const doc = require('firebase/firestore').doc;
+// const where = require('firebase/firestore').where;
+// const getDocs = require('firebase/firestore').getDocs;
+var runAlgorithm = require('./Algorithm').runAlgorithm;
 
 class FormCreator extends Component {
   constructor(props) {
@@ -117,26 +123,13 @@ class FormCreator extends Component {
     });
   }
 
-  async runAlgorithm() {
-    let questionsQuery = query(collection(this.props.db, "preferences"), where("class", "==", doc(this.props.db, 'classes', this.state.classID)));
-    const querySnapshot = await getDocs(questionsQuery);
+  async fetchAndCleanStudents() {
+    let querySnapshot = await getDocs(query(collection(this.props.db, "preferences"), where("class", "==", doc(this.props.db, 'classes', this.state.classID))));
     let prefs = [];
     querySnapshot.forEach(doc => {
-      prefs.push(doc);
+      prefs.push(doc.data());
     });
-    prefs.sort((q1, q2) => {
-      return q1.data()['studentName'] < q2.data()['studentName'] ? -1 : 1;
-    });
-    let pairings = []
-    for (let i = 0; i < prefs.length - 1; i += 2) {
-      pairings.push(prefs[i].data()['studentName'] + ' and ' + prefs[i + 1].data()['studentName'])
-    }
-    if (prefs.length % 2 !== 0) {
-      pairings.push("On their own: " + prefs[prefs.length - 1].data()['studentName']);
-    }
-    this.setState({
-        pairings: pairings
-    });
+    return prefs;
   }
 
   render() {
@@ -158,7 +151,10 @@ class FormCreator extends Component {
           <button className="removeQuestion" onClick={() => this.handleRemoveQuestion()}>Remove Question</button>
           <div><button className="submit" onClick={() => this.submit()}>Submit</button></div>
           <div><label>{this.state.link}</label></div>
-          <div><button className="runAlgo" onClick={() => this.runAlgorithm()}>Run Algorithm</button></div>
+          <div><button className="runAlgo" onClick={async () => {
+            let pairings = runAlgorithm(await this.fetchAndCleanStudents());
+            this.setState({pairings: pairings})
+          }}>Run Algorithm</button></div>
           <div>
             {this.state.pairings.map(item =>
               <div key={'p' + item.index}><label>{item}</label></div>
