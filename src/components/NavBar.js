@@ -42,7 +42,6 @@ const firebaseConfig = {
 
         let class_id = Math.random().toString().substring(2,8);
         let n = input
-        console.log(n);
         setCourses([...courses, { course_id: class_id, title: n, path: '/courses', icon: <IoSchool />, className: 'nav-text' }])
         
         addToDb(n);
@@ -64,25 +63,16 @@ const firebaseConfig = {
 
         let questionsQuery = query(collection(db, "classes"))
         const data = await getDocs(questionsQuery);
-
-        const ids = []
-        //console.log(data)
-
-        data.docs.forEach(doc => {
-            ids.push(doc)
-        });
-
-        ids.forEach(i => {
-            console.log(i)
-            let courseQuery = query(collection(db, "classes"), where ("id", "==", doc(i)))
-            const courseData = getDocs(courseQuery);
-            setCourses([...courses, { course_id: i, title: courseData, path: '/courses', icon: <IoSchool />, className: 'nav-text' }])
-        })
-
+        const docs = data.docs.map(doc => doc.data())
+    
+        const newCourses = docs.map((doc, index) => { return { course_id: index, title: doc.name, path: '/courses', icon: <IoSchool />, className: 'nav-text' }})
+        
+        setCourses([ ...courses, ...newCourses])
     }
+    
     useEffect ( () => {
         fetchClasses();
-    }) 
+    }, []) 
     
     return (
     <>
