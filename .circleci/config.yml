@@ -1,11 +1,16 @@
 version: 2.1
-
 orbs:
   node: circleci/node@5.0.2
 
 
-workflows:
-    example-workflow:
-      jobs:
-        - node/run:
-            npm-run: npm run test
+jobs:
+  build_and_test: PartnerUp Tests
+    docker:
+      - image: cimg/node:17.2.0
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: npm
+      - run:
+          command: npm run test
+          name: Run tests
