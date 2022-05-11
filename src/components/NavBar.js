@@ -39,7 +39,6 @@ const firebaseConfig = {
 
     const addCourse = (input) => {
         setShowModal(false)
-        console.log(input);
 
         let class_id = Math.random().toString().substring(2,8);
         let n = input
@@ -51,12 +50,9 @@ const firebaseConfig = {
 
 
     const addToDb = (n) => {
-        
-            console.log(n)
             addDoc(collection(db, 'classes'), { 
                 name: n
             });
-        
     }
     
     const handleSubmit = (input) => {
@@ -64,7 +60,29 @@ const firebaseConfig = {
         addToDb(courses);
     }
 
+    const fetchClasses = async () => {
 
+        let questionsQuery = query(collection(db, "classes"))
+        const data = await getDocs(questionsQuery);
+
+        const ids = []
+        //console.log(data)
+
+        data.docs.forEach(doc => {
+            ids.push(doc)
+        });
+
+        ids.forEach(i => {
+            console.log(i)
+            let courseQuery = query(collection(db, "classes"), where ("id", "==", doc(i)))
+            const courseData = getDocs(courseQuery);
+            setCourses([...courses, { course_id: i, title: courseData, path: '/courses', icon: <IoSchool />, className: 'nav-text' }])
+        })
+
+    }
+    useEffect ( () => {
+        fetchClasses();
+    }) 
     
     return (
     <>
