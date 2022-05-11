@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaBars } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
@@ -7,9 +7,11 @@ import './NavBar.css';
 import { IconContext } from 'react-icons';
 import { IoMdAddCircleOutline } from "react-icons/io";
 import {IoSchool} from "react-icons/io5";
-import { collection, addDoc, doc, query, where, getDocs } from "firebase/firestore";
+import { collection, addDoc, doc, query, where, getDocs, QuerySnapshot } from "firebase/firestore";
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from "firebase/firestore";
+import { async } from '@firebase/util';
+import { queryAllByAltText } from '@testing-library/react';
 
 function NavBar() {
 
@@ -40,27 +42,30 @@ const firebaseConfig = {
         console.log(input);
 
         let class_id = Math.random().toString().substring(2,8);
-        setCourses([...courses, { course_id: class_id, title: input, path: '/courses', icon: <IoSchool />, className: 'nav-text' }])
+        let n = input
+        console.log(n);
+        setCourses([...courses, { course_id: class_id, title: n, path: '/courses', icon: <IoSchool />, className: 'nav-text' }])
+        
+        addToDb(n);
     }
 
 
-    const addToDb = () => {
+    const addToDb = (n) => {
         
-        for (let i = 0; i < courses.length; i++) {
-
-            console.log(courses[i].title)
-            console.log(courses[i].course_id)
+            console.log(n)
             addDoc(collection(db, 'classes'), { 
-                name: courses[i].title
+                name: n
             });
-          }
+        
     }
     
     const handleSubmit = (input) => {
         addCourse(input);
-        addToDb();
+        addToDb(courses);
     }
 
+
+    
     return (
     <>
     <IconContext.Provider value= {{ color: 'white' }}>
@@ -79,7 +84,7 @@ const firebaseConfig = {
                 </li>
                 {courses.map((item, index) => {
                     return (
-                        <li key={index} className={item.className}>
+                        <li key={index} className='nav-text'>
                             <Link to='/course' state={item}>
                                 {item.icon}
                                 <span>{item.title}</span>
