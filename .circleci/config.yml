@@ -6,7 +6,7 @@ orbs:
 jobs:
   build_and_test: PartnerUp Tests
     docker:
-      - image: cimg/node:17.2.0
+      - image: circleci/node:17.2.0
     steps:
       - checkout
       - node/install-packages:
