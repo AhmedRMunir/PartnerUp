@@ -1,6 +1,12 @@
 version: 2.1
 
-  workflows:
-    test:
+orbs:
+  node: circleci/node@5.0.2
+
+
+workflows:
+    example-workflow:
       jobs:
-        - jest/test
+        - node/run:
+            app-dir: ~/PartnerUp
+            npm-run: npm run test
