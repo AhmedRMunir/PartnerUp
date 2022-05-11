@@ -3,14 +3,9 @@ orbs:
   node: circleci/node@5.0.2
 
 
-jobs:
-  build_and_test: PartnerUp Tests
-    docker:
-      - image: circleci/node:17.2.0
-    steps:
-      - checkout
-      - node/install-packages:
-          pkg-manager: npm
-      - run:
-          command: npm run test
-          name: Run tests
+workflows:
+    example-workflow:
+      jobs:
+        - node/test:
+            pkg-manager: npm
+            run-command: npm t
