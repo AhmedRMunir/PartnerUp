@@ -8,5 +8,4 @@ workflows:
     example-workflow:
       jobs:
         - node/run:
-            app-dir: ~/PartnerUp
             npm-run: npm run test
