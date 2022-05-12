@@ -1,19 +1,12 @@
 import { IoSchool } from 'react-icons/io5';
-import { GrAddCircle } from "react-icons/gr";
 import './NavBar.css';
 
 export const SideBarData = [
     {
-        title: 'Course 1',
-        path: '/Course1',
+        course_id: 0,
+        title: 'Test Course',
+        path: 'course',
         icon: <IoSchool/>,
-        className: 'nav-text'
-    },
-
-    {
-        title: 'Add Course',
-        path: '/',
-        icon: <GrAddCircle/>,
         className: 'nav-text'
     }
 ]

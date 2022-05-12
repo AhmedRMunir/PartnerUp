@@ -31,7 +31,7 @@ root.render(
       <Routes>
         <Route path='/' element={<LaunchPage db={db} />} />
         <Route path='/instructor-home' element={<InstructorHome db={db} />} />
-        <Route path='/course1' element={<FormCreator classID={'NVLtMSE99jAXbooSTP6n'} db={db} />} />
+        <Route path='/course' element={<FormCreator classID={'NVLtMSE99jAXbooSTP6n'} db={db} />} />
         <Route path='/student-form' element={<StudentForm db={db} />} />
       </Routes>
     </BrowserRouter>
