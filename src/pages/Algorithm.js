@@ -1,3 +1,8 @@
+// Matching Algorithm
+
+// Takes an array of JSON data objects representing student preference form responses (one for each student) 
+// and returns an array of strings representing the generated student pairs.
+
 export function runAlgorithm(prefs) {
 
     let pairings = []

@@ -3,14 +3,18 @@ import NavBar from '../components/NavBar';
 import './Courses.css';
 import NewQuestionTemplate from '../components/NewQuestionTemplate';
 import { collection, addDoc, doc, query, where, getDocs } from "firebase/firestore";
-// const query = require('firebase/firestore').query;
-// const collection = require('firebase/firestore').collection;
-// const doc = require('firebase/firestore').doc;
-// const where = require('firebase/firestore').where;
-// const getDocs = require('firebase/firestore').getDocs;
 var runAlgorithm = require('./Algorithm').runAlgorithm;
 
+// A FormCreator is a component that allows a user to input a series of questions and to configure options for those questions
+// Once the user is done making the form, the data is uploaded to our app's backend so that students can answer the questions later
+
+// Once responses have been submitted by students, the instructor can use a button on the page to run a matching algorithm and output
+// its results on the page
+
+// Can pass a database object as a prop in order to specify the location to upload the submitted form data and retrieve student responses
+
 class FormCreator extends Component {
+  // Instantiates a FormCreator with a random classID, 1 blank question, and 2 blank choices
   constructor(props) {
     super(props);
     let classID = Math.random().toString().substring(2,8);
@@ -25,6 +29,7 @@ class FormCreator extends Component {
     };
   }
 
+  // Handles the event of adding a question to the form
   handleAddQuestion() {
     if (this.state.numQuestions >= 10) {
       return;
@@ -44,6 +49,7 @@ class FormCreator extends Component {
     });
   }
 
+  // Handles the event of removing a question from the form
   handleRemoveQuestion() {
     if (this.state.numQuestions <= 1) {
       return;
@@ -63,6 +69,7 @@ class FormCreator extends Component {
     });
   }
 
+  // Handles the event of adding a choices to a question in the form
   handleAddChoice(i) {
     if (this.state.numChoices[i] >= 10) {
       return;
@@ -77,6 +84,7 @@ class FormCreator extends Component {
     });
   }
 
+  // Handles the event of removing a choice from a question in the form
   handleRemoveChoice(i) {
     if (this.state.numChoices[i] <= 2) {
       return;
@@ -91,6 +99,7 @@ class FormCreator extends Component {
     });
   }
 
+  // Handles the event of modifying a question in the form
   handleChangeQuestion(i, value) {
     let newQuestions = this.state.questions.slice();
     newQuestions[i] = value;
@@ -99,6 +108,7 @@ class FormCreator extends Component {
     });
   }
 
+  // Handles the event of modifying a choice for a question in the form
   handleChangeChoice(i, j, value) {
     let newChoices = this.state.choices.slice();
     newChoices[i][j] = value;
@@ -107,6 +117,7 @@ class FormCreator extends Component {
     });
   }
 
+  // Handles the event of submitting the form and uploading its data to the backend (this.props.db)
   submit() {
     for (let i = 0; i < this.state.questions.length; i++) {
       addDoc(collection(this.props.db, 'questions'), {
@@ -123,6 +134,7 @@ class FormCreator extends Component {
     });
   }
 
+  // Fetches the students' submitted preference data from the backend
   async fetchAndCleanStudents() {
     let querySnapshot = await getDocs(query(collection(this.props.db, "preferences"), where("class", "==", doc(this.props.db, 'classes', this.state.classID))));
     let prefs = [];
@@ -132,6 +144,7 @@ class FormCreator extends Component {
     return prefs;
   }
 
+  // Renders the question and choice templates, as well as the submit and run algorithm buttons
   render() {
     let questions = []
     for (let i = 0; i < this.state.numQuestions; i++) {

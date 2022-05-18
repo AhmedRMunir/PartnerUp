@@ -1,6 +1,10 @@
 import { React, Component } from 'react';
 
+// A StudentFormQuestion is a component that can present a preference question and receive input about which choice the user selects
+// Can pass onOptionChange as a prop, which will call whenever the user selects a new option for the question
+
 class StudentFormQuestion extends Component {
+    // Renders a question and its choices as radio buttons
     render() {
         let choices = [];
         for (let i = 0; i < this.props.question.data()['choices'].length; i++) {
