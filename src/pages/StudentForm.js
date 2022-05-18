@@ -54,6 +54,7 @@ class QuestionTemplate extends Component {
             class: doc(this.props.db, 'classes', this.state.classID),
             studentName: this.state.studentName
         });
+        alert("Your answer was recorded. You may leave this page.")
     }
 
     render() {
