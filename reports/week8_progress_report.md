@@ -27,15 +27,17 @@
 ## Next week's goals:
 
 - Roman:
-  - Finish Dev Docs
   - Go over other written docs and review
+  - Work on CSS
 - James:
   - Add CSS formatting to our interfaces
+  - Work on Google SSO
+- Alamjit:
+  - Work on Google SSO
 - Ahmed + Detlef:
-  - Add SSO login
-- Alamjit + Umair:
-  - Continue on improving on the Matching Algorithm
   - Improve Testing for Matching Algorithm and other features
+- Umair:
+  - Continue on improving on the Matching Algorithm
 
 ## Contributions:
 
