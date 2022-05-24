@@ -1,4 +1,6 @@
-import { React, Component } from 'react';
+// import { React, Component } from 'react';
+var React = require('react');
+var Component = require('react').Component;
 
 // A StudentFormQuestion is a component that can present a preference question and receive input about which choice the user selects
 // Can pass onOptionChange as a prop, which will call whenever the user selects a new option for the question

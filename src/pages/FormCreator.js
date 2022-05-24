@@ -3,7 +3,7 @@ import NavBar from '../components/NavBar';
 import './Courses.css';
 import NewQuestionTemplate from '../components/NewQuestionTemplate';
 import { collection, addDoc, doc, query, where, getDocs } from "firebase/firestore";
-var runAlgorithm = require('./Algorithm').runAlgorithm;
+var Utils = require('./Utils');
 
 // A FormCreator is a component that allows a user to input a series of questions and to configure options for those questions
 // Once the user is done making the form, the data is uploaded to our app's backend so that students can answer the questions later
@@ -127,8 +127,14 @@ class FormCreator extends Component {
         class: doc(this.props.db, 'classes', this.state.classID)
       });
     }
-    let baseURL = window.location.origin;
-    let formURL = baseURL + "/student-form?classID=" + this.state.classID;
+    // let baseURL = window.location.origin;
+    // let formURL = baseURL + "/student-form?classID=" + this.state.classID;
+    // this.setState({
+    //   link: formURL
+    // });
+
+    let formURL = Utils.generateFormURL(window.location.origin, this.state.classID);
+
     this.setState({
       link: formURL
     });
@@ -165,7 +171,7 @@ class FormCreator extends Component {
           <div><button className="submit" onClick={() => this.submit()}>Submit</button></div>
           <div><label>{this.state.link}</label></div>
           <div><button className="runAlgo" onClick={async () => {
-            let pairings = runAlgorithm(await this.fetchAndCleanStudents());
+            let pairings = Utils.runAlgorithm(await this.fetchAndCleanStudents());
             this.setState({pairings: pairings})
           }}>Run Algorithm</button></div>
           <div>

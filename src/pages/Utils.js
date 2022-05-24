@@ -3,6 +3,10 @@
 // Takes an array of JSON data objects representing student preference form responses (one for each student) 
 // and returns an array of strings representing the generated student pairs.
 
+var React = require('react');
+var StudentFormQuestion = require('../components/StudentFormQuestion');
+// import StudentFormQuestion from "../components/StudentFormQuestion";
+
 export function runAlgorithm(prefs) {
 
     let pairings = []
@@ -53,4 +57,18 @@ export function runAlgorithm(prefs) {
     }
 
     return pairings;
+}
+
+
+export function generateFormURL(baseURL, classID) {
+    return baseURL + "/student-form?classID=" + classID;
+}
+
+export function generateQuestionHTML(questions, handleOptionChange) {
+  let questionsHTML = []
+  for (let i = 0; i < questions.length; i++) {
+      let doc = questions[i];
+      questionsHTML.push(<StudentFormQuestion key={doc.id} question={doc} onOptionChange={optionNum => handleOptionChange(i, optionNum)} />);
+  }
+  return questionsHTML;
 }

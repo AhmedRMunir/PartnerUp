@@ -2,6 +2,7 @@ import { React, Component } from 'react';
 import { collection, query, doc, where, getDocs, addDoc } from "firebase/firestore";
 import StudentFormQuestion from '../components/StudentFormQuestion';
 import './StudentForm.css';
+import { generateQuestionHTML } from './Utils';
 
 // A StudentForm is a component that renders a preference form for a class (based on the URL parameter classID) and receives responses, 
 // which are uploaded to the backend upon submission
@@ -68,11 +69,14 @@ class StudentForm extends Component {
 
     // Renders the preference form for the URL-specified class
     render() {
-        let questions = []
-        for (let i = 0; i < this.state.questions.length; i++) {
-            let doc = this.state.questions[i];
-            questions.push(<StudentFormQuestion key={doc.id} question={doc} onOptionChange={optionNum => this.handleOptionChange(i, optionNum)} />);
-        }
+        // let questions = []
+        // for (let i = 0; i < this.state.questions.length; i++) {
+        //     let doc = this.state.questions[i];
+        //     questions.push(<StudentFormQuestion key={doc.id} question={doc} onOptionChange={optionNum => this.handleOptionChange(i, optionNum)} />);
+        // }
+
+        let questions = generateQuestionHTML(this.state.questions, this.handleOptionChange);
+
         return (
             <div className="PrefForm">
                 <div>
