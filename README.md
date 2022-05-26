@@ -27,7 +27,7 @@ The app will be built using React for the front-end, Firebase for the backend.
 3) Build the app
    - > `./gradlew`
 5) Run the following command:
-   - > npm start
+   - > `npm start`
 
 ## Testing
 
@@ -36,7 +36,7 @@ The app will be built using React for the front-end, Firebase for the backend.
 3) Build the app
    - > `./gradlew`
 5) Run the following commands:
-   - > npm test
+   - > `npm test`
    
 ## Requirements and Policies Document
 - https://tinyurl.com/partnerUpReqDoc
