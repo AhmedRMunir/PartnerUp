@@ -4,6 +4,12 @@
 
 **PartnerUp!** is an app that is used mainly by instructors to match students into groups based on student preferences.
 
+## User Doc
+Check out user-documentation.md
+
+## Dev Doc
+Check out dev-documentation.md
+
 ## Use Case
 
 Instructor creates new class and creates preferences: OPERATIONAL
