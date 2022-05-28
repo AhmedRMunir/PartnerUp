@@ -24,7 +24,9 @@ The app will be built using React for the front-end, Firebase for the backend.
 
 1) Clone the repo
 2) Open a terminal in the project directory
-3) Build the app
+3) Install dependencies
+   - > `npm install`
+4) Build the app
    - > `./gradlew`
 5) Run the following command:
    - > `npm start`
@@ -33,7 +35,9 @@ The app will be built using React for the front-end, Firebase for the backend.
 
 1) Clone the repo
 2) Open a terminal in the project directory
-3) Build the app
+3) Install dependencies
+   - > `npm install`
+4) Build the app
    - > `./gradlew`
 5) Run the following commands:
    - > `npm test`
