@@ -10,7 +10,7 @@ No installation needed. The service is a website.
 
 ## How to run the Software?
 
-Simply go to the website (link: Work In Progress) and it should be working - Work in progress, the website is not externally accessible yet
+Simply go to https://partnerup-8fb5c.web.app/
 
 ## How to use the Software?
 

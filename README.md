@@ -4,11 +4,15 @@
 
 **PartnerUp!** is an webapp that is used mainly by instructors to match students into groups based on student preferences.
 
+## Link to WebApp
+
+- https://partnerup-8fb5c.web.app/
+
 ## User Doc
-Check out [User Documentation](user-documentation.md)
+- Check out [User Documentation](user-documentation.md)
 
 ## Dev Doc
-Check out [Developer Documentation](dev-documentation.md)
+- Check out [Developer Documentation](dev-documentation.md)
 
 ## Use Case
 
