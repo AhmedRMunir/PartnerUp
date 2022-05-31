@@ -5,15 +5,17 @@
 **PartnerUp!** is an app that is used mainly by instructors to match students into groups based on student preferences.
 
 ## User Doc
-Check out user-documentation.md
+Check out [User Documentation](user-documentation.md)
 
 ## Dev Doc
-Check out dev-documentation.md
+Check out [Developer Documentation](dev-documentation.md)
 
 ## Use Case
 
 Instructor creates new class and creates preferences: OPERATIONAL
+
 Instructor generates pairs of students: OPERATIONAL
+
 Filling out preference form as student: OPERATIONAL
 
 ## Development Kit
@@ -45,4 +47,3 @@ The app will be built using React for the front-end, Firebase for the backend.
 ## Requirements and Policies Document
 - https://tinyurl.com/partnerUpReqDoc
 - Alternative link: [Document Link](https://docs.google.com/document/d/1VrvV0UM93s2e9YQNFb8kr0QR5iFvXlxVcxXGz5e97yA)
--   
