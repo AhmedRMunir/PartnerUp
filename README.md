@@ -12,11 +12,12 @@ Check out [Developer Documentation](dev-documentation.md)
 
 ## Use Case
 
-Instructor creates new class and creates preferences: OPERATIONAL
-
-Instructor generates pairs of students: OPERATIONAL
-
-Filling out preference form as student: OPERATIONAL
+- Instructor creates new class and creates preferences: 
+  - OPERATIONAL
+- Instructor generates pairs of students: 
+  - OPERATIONAL
+- Filling out preference form as student: 
+  - OPERATIONAL
 
 ## Development Kit
 
@@ -28,9 +29,9 @@ The app will be built using React for the front-end, Firebase for the backend.
 2) Open a terminal in the project directory
 3) Install dependencies
    - > `npm install`
-4) Build the app
-   - > `./gradlew`
-5) Run the following command:
+<!-- 4) Build the app
+   - > `./gradlew` -->
+4) Run the following command:
    - > `npm start`
 
 ## Testing
@@ -39,9 +40,9 @@ The app will be built using React for the front-end, Firebase for the backend.
 2) Open a terminal in the project directory
 3) Install dependencies
    - > `npm install`
-4) Build the app
-   - > `./gradlew`
-5) Run the following command:
+<!-- 4) Build the app
+   - > `./gradlew` -->
+4) Run the following command:
    - > `npm test`
    
 ## Requirements and Policies Document
