@@ -54,3 +54,11 @@
 - Refer to the above steps to build the software and test the software
 - Run the service and manually test out the Use Cases detailed in the Living Requirements Document
 - If no issues are encountered, commit and push the code with the changes
+
+## Deployment
+
+1) Run the following commands:
+   - > `npm run build`
+   - > `firebase deploy`
+2) If you run into an authentication issue with `firebase deploy`, make sure you're logged into your firebase account
+3) If you're not authenticated to deploy, contact the project Devs.
