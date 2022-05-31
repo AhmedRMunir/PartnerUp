@@ -2,6 +2,7 @@
   "name": "partnerup",
   "version": "0.1.0",
   "private": true,
+  "public": "build",
   "dependencies": {
     "@babel/preset-env": "^7.16.0",
     "@babel/preset-react": "^7.16.0",
