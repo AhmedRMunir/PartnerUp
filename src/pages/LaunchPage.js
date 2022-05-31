@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { getAuth, signInWithRedirect, getRedirectResult, GoogleAuthProvider } from "firebase/auth";
 import React, { useEffect } from 'react';
+import './LaunchPage.css'
 
 function login(auth) {
   const provider = new GoogleAuthProvider();
@@ -45,9 +46,9 @@ function LaunchPage() {
     });
   });
   return (
-    <div>
-      <h1>PartnerUp!</h1>
-      <button onClick={() => login(auth)}>Login with SSO</button>
+    <div className='launchPage'>
+      <h1 className='title'>PartnerUp!</h1>
+      <button className='login-button' onClick={() => login(auth)}>Login with SSO</button>
     </div>
   )
 }

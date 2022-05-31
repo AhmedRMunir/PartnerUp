@@ -3,6 +3,8 @@ import NavBar from '../components/NavBar';
 import './Courses.css';
 import NewQuestionTemplate from '../components/NewQuestionTemplate';
 import { collection, addDoc, doc, query, where, getDocs } from "firebase/firestore";
+import './FormCreator.css';
+
 var runAlgorithm = require('./Algorithm').runAlgorithm;
 
 // A FormCreator is a component that allows a user to input a series of questions and to configure options for those questions
@@ -148,7 +150,8 @@ class FormCreator extends Component {
   render() {
     let questions = []
     for (let i = 0; i < this.state.numQuestions; i++) {
-      questions.push(<NewQuestionTemplate key={'q' + i}
+      questions.push(<NewQuestionTemplate className='template'
+                                          key={'q' + i}
                                           numQuestions={i + 1} 
                                           numChoices={this.state.numChoices[i]}
                                           onAddChoice={() => this.handleAddChoice(i)}
@@ -157,13 +160,13 @@ class FormCreator extends Component {
                                           onChangeChoice={(j, value) => this.handleChangeChoice(i, j, value)}/>);
     }
     return (
-      <div>
+      <div className='q'>
           <NavBar/>
           {questions}
           <button className="addQuestion" onClick={() => this.handleAddQuestion()}>Add Question</button>
           <button className="removeQuestion" onClick={() => this.handleRemoveQuestion()}>Remove Question</button>
           <div><button className="submit" onClick={() => this.submit()}>Submit</button></div>
-          <div><label>{this.state.link}</label></div>
+          <div><a href={this.state.link}>{this.state.link}</a></div>
           <div><button className="runAlgo" onClick={async () => {
             let pairings = runAlgorithm(await this.fetchAndCleanStudents());
             this.setState({pairings: pairings})

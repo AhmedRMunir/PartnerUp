@@ -4,10 +4,12 @@
 
 .questionLabel {
     margin-bottom: 0.3cm;
+    margin-left: 17px;
 }
 
 .choiceLabel {
-    margin-bottom: 0.1cm;
+    margin-bottom: 0.3cm;
+    margin-left: 10px;
 }
 
 .addChoice {

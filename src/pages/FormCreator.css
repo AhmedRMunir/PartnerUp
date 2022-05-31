@@ -1,0 +1,13 @@
+.q, .question {
+    text-align: center;
+}
+
+
+
+.addQuestion, .addChoice {
+    margin-right: 10px;
+}
+
+.runAlgo{
+    margin-top: 10px;
+}

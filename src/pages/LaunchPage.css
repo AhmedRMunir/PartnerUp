@@ -1,0 +1,20 @@
+body {
+    background-color: beige;
+}
+.launchPage {
+  text-align: center;
+  margin-top: 170px;
+}
+
+.title {
+    font-size: 7rem;
+    font-family: cursive;
+}
+
+.login-button {
+    width: 250px;
+    height: 50px;
+    font-size: 2rem;
+    margin-top: 10px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
